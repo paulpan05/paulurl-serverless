@@ -1,0 +1,14 @@
+{
+  "name": "paulurl-serverless",
+  "version": "1.0.0",
+  "description": "PaulURL.com url shortener back-end",
+  "main": "index.js",
+  "repository": "https://github.com/paulpan05/paulurl-serverless",
+  "author": "Paul Pan",
+  "license": "Apache-2.0",
+  "private": false,
+  "dependencies": {
+    "aws-serverless-express": "^3.3.6",
+    "express": "^4.17.1"
+  }
+}
