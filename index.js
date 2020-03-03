@@ -6,8 +6,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(3000);
-
 const server = awsServerlessExpress.createServer(app);
 
 module.exports.handler = (event, context) => {

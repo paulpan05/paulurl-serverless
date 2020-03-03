@@ -9,6 +9,10 @@
   "private": false,
   "dependencies": {
     "aws-serverless-express": "^3.3.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "serverless-dynamodb-local": "^0.2.39"
+  },
+  "devDependencies": {
+    "serverless-offline": "^5.12.1"
   }
 }
