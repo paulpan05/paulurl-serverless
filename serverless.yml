@@ -108,8 +108,25 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
+resources:
+  Resources:
+    customURLTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: customURLTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: N
+          - AttributeName: route
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: route
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
 #    NewResource:
 #      Type: AWS::S3::Bucket
 #      Properties:
@@ -118,3 +135,16 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+custom:
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
