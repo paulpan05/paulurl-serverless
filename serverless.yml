@@ -29,11 +29,16 @@ provider:
   runtime: nodejs12.x
 
 # you can overwrite defaults here
-#  stage: dev
+#  stage: prod
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "dynamodb:GetItem"
+         - "dynamodb:Scan"
+       Resource: "arn:aws:dynamodb:us-east-1:898617669485:table/customUrlTable"
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:ListBucket"
@@ -110,20 +115,16 @@ functions:
 # you can add CloudFormation resource templates here
 resources:
   Resources:
-    customURLTable:
+    customUrlTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: customURLTable
+        TableName: customUrlTable
         AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: N
           - AttributeName: route
             AttributeType: S
         KeySchema:
-          - AttributeName: id
-            KeyType: HASH
           - AttributeName: route
-            KeyType: RANGE
+            KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 10
           WriteCapacityUnits: 10
