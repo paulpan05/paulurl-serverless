@@ -20,7 +20,7 @@ app.get('/:route', (req, res) => {
     if (err) {
       res.status(err.statusCode || 500).send(err.message);
     } else {
-      res.json(data);
+      res.json(data.Item);
     }
   });
 });
