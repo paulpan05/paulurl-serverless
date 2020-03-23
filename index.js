@@ -1,10 +1,13 @@
 const awsServerlessExpress = require('aws-serverless-express');
 const express = require('express');
+const cors = require('cors');
 const AWS = require("aws-sdk");
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const app = express();
+
+app.use(cors());
 
 app.get('/:route', (req, res) => {
   const params = {
